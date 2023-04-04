@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../static/style.css" rel="stylesheet" media="all" type="text/css">
+  <title>Accueil</title>
+</head>
+
+<body>
+  <div class="navbar">
+    <a class="linkacc">
+      <button class="accueil" onclick="document.location='/'">
+          Accueil
+      </button>
+    </a>
+  </div>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <form action="/filter" method="post" autocomplete="off">
+      <fieldset>
+        <legend>Filtres</legend>
+        <!-- si la checkbox est coché le serveur reçoit par exemple members1=on g-->
+        <label for="nbrmembers">Nombre de membres</label>
+        <div>
+          <input type="checkbox" id="members" name="members1" value="on">
+          <label for="members">1</label>
+          <input type="checkbox" id="members" name="members2" value="on">
+          <label for="members">2</label>
+          <input type="checkbox" id="members" name="members3" value="on">
+          <label for="members">3</label>
+          <input type="checkbox" id="members" name="members4" value="on">
+          <label for="members">4</label>
+          <input type="checkbox" id="members" name="members5" value="on">
+          <label for="members">5</label>
+          <input type="checkbox" id="members" name="members6" value="on">
+          <label for="members">6</label>
+          <input type="checkbox" id="members" name="members7" value="on">
+          <label for="members">7</label>
+          <input type="checkbox" id="members" name="members8" value="on">
+          <label for="members">8</label>
+        </div>
+        <br>
+        <div>
+          <input type="range" name="filter_startingyear" value="{{ .Temps }}" min="1960" max="2022"
+            oninput="this.form.starting_year_input.value=this.value" />
+          <input id="creationsdates" type="number" name="starting_year_input" value="{{ .Temps }}" min="1960" max="2022"
+            oninput="this.form.filter_startingyear.value=this.value" />
+            <br>
+          <label for="creationdates">Date de création</label>
+        </div>
+        <br>
+        <div>
+          <input type="checkbox" id="firstalbum" name="firstalbum" value="firstalbum">
+          <label for="firstalbum">Tri par date du premier album</label>
+        </div>
+        <br>
+        <div>
+          <label for="loc-select">Choisissez un lieu:</label>
+          <select name="locations" id="loc-select">
+            <option value="">--Sélectionnez une région--</option>
+            {{ range .Loc }}
+              <option value="{{ . }}">{{ . }}</option>
+          {{ end }}
+        </select>
+        </div>
+        <br>
+        <div>
+          <button type="submit">Appliquer les filtres</button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <span class="accfilter" onclick="openNav()">Filtres</span>
+
+<div class="wrapper">
+  <div class="search-input">
+    <input type="text" placeholder="Taper pour chercher..">
+    <div class="autocom-box">
+
+    </div>
+  </div>
+</div>
+
+  <div class="box">
+    {{ range .TabD }}
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src={{ .Image }} style="width:41vh;height:37vh; border-radius: 20%;">
+        </div>
+        <div class="flip-card-back">
+          <h1 style="text-align: center;">{{ .Name }} </h1>
+          <p>Membres :
+            </br>
+            {{ range .Members}} {{ . }}, {{ end }}
+            </br>
+            {{ .CreationDate }}
+          </p>
+          <form action="/artist" method="post" autocomplete="off">
+            <button type="submit" class="btn" style="display: relative;">Plus d'infos</button>
+            <input id="prodId" name="artist" type="hidden" value={{ .Id }}>
+          </form>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="marge2"></div>
+
+
+  <script type="text/javascript" src="static/script2.js"></script>
+  <script type="text/javascript" src="static/suggestions.js"></script>
+
+{{ range .TabA }}
+<script>
+    suggestions.push(`{{ .Name }}`)
+    suggestions.push(`{{ .CreationDate }}`)
+    suggestions.push(`{{ .Members }}`)
+    suggestions.push(`{{ .Id }}`)
+</script>
+{{ end }}
+
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "350px";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+</body>
+
+</html>

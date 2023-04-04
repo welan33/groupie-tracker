@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.flex{
+    display: flex;
+}
+
+.Navbar{
+    background-color: #262626;
+    height: 70px;
+    position: relative;
+}
+
+.accueil{
+    background-color: #262626;
+    color: white;
+    border: 3px solid #262626;
+    height:40px;
+    margin-top:15px;
+    margin-left:15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    float: left;
+    font-family: Arial;
+    font-size: 30px;
+  }
+
+
+:hover.accueil{    
+    border: 3px solid #fff; 
+    cursor: pointer;
+}
+
+.name{
+    height: auto;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 5px solid #000;
+    position: relative;
+}
+
+.img{
+    width: 250px;
+    height:37vh;
+    padding-left: auto;
+    padding-right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    /* border-radius:5px;
+    border: 2px solid #000; 
+    background-color: #262626; */   
+    position: relative;
+}
+
+div#content div h1{
+    margin-left: 100px;
+    text-decoration-line: underline;
+    font-size:  32px;
+}
+
+div#content div h2 {
+    margin-left: 20px;
+}
+
+div#content div p {
+    margin-left: 20px;
+}
+div#content div{
+    display: inline-block;
+    width: 70%;
+}
+
+div#content div.test{
+    width: 100%;
+}
+
+div#content div.test p{
+    margin-left:30px;
+    margin-right:20px;
+    font-size: 17px;
+}
+
+div#content div.text{
+    margin-left:40px;
+    font-size: 17px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.linkacc {
+    padding: 0;
+    margin: 0;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    padding: 10px;
+    background-color: white;
+  }
+  
+  #map {
+    /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+    height: 700px;
+}
+  
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  
